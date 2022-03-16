@@ -28,12 +28,16 @@ void	ft_pipex_s(int fd_in, int fd_out, char **argv, t_pipex *pipex)
 	else
 	{
 		waitpid(pid, &status, 0);
+		if (WEXITSTATUS(status) == EXIT_FAILURE)
+			exit(1);
 		ft_pipex_p(fd, fd_out, argv, pipex);
 	}
 }
 
 void	ft_pipex_p(int *fd, int fd_out, char **argv, t_pipex *pipex)
 {
+	int	status;
+
 	close(fd[WRITE_END]);
 	dup2(fd[READ_END], STDIN_FILENO);
 	close(fd[READ_END]);
