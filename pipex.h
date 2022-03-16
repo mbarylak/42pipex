@@ -12,6 +12,8 @@
 
 typedef struct	s_pipex
 {
+	int		fd_in;
+	int		fd_out;
 	char	*infile;
 	char	*outfile;
 	char	**env;
@@ -33,8 +35,8 @@ void	ft_get_path(t_pipex *pipex);
 void	ft_get_files(int argc, char **argv, t_pipex *pipex);
 char	*get_right_path(char *cmd, t_pipex *pipex);
 void	ft_exe(char **argv, int n, t_pipex *pipex);
-void	ft_pipex_s(int fd_in, int fd_out, char **argv, t_pipex *pipex);
-void	ft_pipex_p(int *fd, int fd_out, char **argv, t_pipex *pipex);
+void	ft_pipex_s(int n, char **argv, t_pipex *pipex);
+void	ft_pipex_p(int *fd, int pid);
 
 /* ERROR MNGT */
 
