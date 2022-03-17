@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/17 18:24:31 by mbarylak          #+#    #+#             */
+/*   Updated: 2022/03/17 19:45:20 by mbarylak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 void	ft_get_path(t_pipex *pipex)
@@ -49,9 +61,11 @@ void	ft_exe(char **argv, int n, t_pipex *pipex)
 	cmd = ft_split(argv[n], ' ');
 	if (access(cmd[0], X_OK) == 0)
 		if (execve(cmd[0], cmd, pipex->env) == -1)
-			ft_error();
+			ft_error(0);
 	path = get_right_path(cmd[0], pipex);
+	printf("%s\n", path);
 	if (execve(path, cmd, pipex->env) == -1)
-		ft_error();
+		ft_error(0);
 	free(path);
+	ft_free(cmd);
 }

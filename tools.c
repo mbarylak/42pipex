@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tools.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/17 18:23:04 by mbarylak          #+#    #+#             */
+/*   Updated: 2022/03/17 19:41:23 by mbarylak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 char	*ft_strchr(const char *s, int c)
@@ -72,6 +84,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		size1--;
 		strjoin[size1 + size2] = s1[size1];
 	}
+	free((char *) s1);
 	return (strjoin);
 }
 

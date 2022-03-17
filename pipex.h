@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/17 18:23:33 by mbarylak          #+#    #+#             */
+/*   Updated: 2022/03/17 19:19:09 by mbarylak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PIPEX_H
 # define PIPEX_H
 
@@ -10,7 +22,7 @@
 # define READ_END 0
 # define WRITE_END 1
 
-typedef struct	s_pipex
+typedef struct s_pipex
 {
 	int		fd_in;
 	int		fd_out;
@@ -40,6 +52,7 @@ void	ft_pipex_p(int *fd, int pid);
 
 /* ERROR MNGT */
 
-void	ft_error(void);
+void	ft_error(int n);
+void	ft_free(char **m);
 
 #endif
