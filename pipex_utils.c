@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:24:31 by mbarylak          #+#    #+#             */
-/*   Updated: 2022/03/17 19:45:20 by mbarylak         ###   ########.fr       */
+/*   Updated: 2022/03/23 18:00:33 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,17 @@ void	ft_exe(char **argv, int n, t_pipex *pipex)
 	cmd = ft_split(argv[n], ' ');
 	if (access(cmd[0], X_OK) == 0)
 		if (execve(cmd[0], cmd, pipex->env) == -1)
-			ft_error(0);
+			ft_error(cmd[0], 0);
 	path = get_right_path(cmd[0], pipex);
-	printf("%s\n", path);
 	if (execve(path, cmd, pipex->env) == -1)
-		ft_error(0);
+		ft_error(cmd[0], 0);
 	free(path);
 	ft_free(cmd);
+}
+
+void	ft_get_info(int argc, char **argv, char **env, t_pipex *pipex)
+{
+	pipex->env = env;
+	ft_get_path(pipex);
+	ft_get_files(argc, argv, pipex);
 }
